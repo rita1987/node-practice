@@ -10,4 +10,13 @@ module.exports = function (app) {
 
     //  修改密码
     app.put('/user/update/:userId', user.updatePassWord);
+
+    app.get('/user/test', (req, res) => {
+        res.send(
+            [{
+                title: "TEST",
+                description: "Hi there! How are you?"
+            }]
+        )
+    })
 };

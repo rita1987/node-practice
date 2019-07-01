@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 
 const cors = require('cors');
 const corsOptions = {
-    origin: 'http://localhost:8085',
+    origin: 'http://localhost:8086',
     optionSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -46,7 +46,7 @@ const md5 = require('md5');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination(req, res, cb) {
-        cb(null, './resource');
+        cb(null, '../server/resource');
     },
     filename(req, file, cb) {
         const fileNameArr = file.originalname.split('.');
@@ -67,6 +67,15 @@ app.use(multer({
 }); */
 require('../route/user.route')(app);
 require('../route/file.route')(app);
+
+app.get('/posts', (req, res) => {
+    res.send(
+        [{
+            title: "Hello World!",
+            description: "Hi there! How are you?"
+        }]
+    )
+})
 
 //  创建服务器
 let server = app.listen(process.env.PORT || 8085, () => {

@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             },
             hash_name: {
-                type: DataTypes.STRING(200),
+                type: DataTypes.STRING(255),
                 allowNull: false
             },
             upload_time: {
@@ -39,7 +39,8 @@ module.exports = function (sequelize, DataTypes) {
                 }
             }
         }, {
-            tableName: 'file'
+            tableName: 'file',
+            timestamps: false
         }
     );
 }

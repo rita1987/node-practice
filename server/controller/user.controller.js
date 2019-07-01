@@ -37,7 +37,6 @@ exports.create = (req, res) => {
 
 //  验证用户名和密码
 exports.validate = (req, res) => {
-    debugger
     if (req.body.username && req.body.password) {
         User.findOne({
                 where: {
